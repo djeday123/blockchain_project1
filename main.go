@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"djeday123/blockchain1/network"
+	"time"
+)
 
 // Server
 // Transport => tcp. udp
@@ -9,5 +12,23 @@ import "fmt"
 // Keypair
 
 func main() {
-	fmt.Println("Hello world")
+	trLocal := network.NewLocalTransport("LOCAL")
+	trRemote := network.NewLocalTransport("REMOTE")
+
+	trLocal.Connect(trRemote)
+	trRemote.Connect(trLocal)
+
+	go func() {
+		for {
+			trRemote.SendMessage(trLocal.Addr(), []byte("hello world"))
+			time.Sleep(1 * time.Second)
+		}
+	}()
+
+	opts := network.ServerOpts{
+		Transports: []network.Transport{trLocal},
+	}
+
+	s := network.NewServer(opts)
+	s.Start()
 }
