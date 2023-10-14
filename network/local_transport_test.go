@@ -7,18 +7,22 @@ import (
 )
 
 func TestConnect(t *testing.T) {
-	tra := NewLocalTransport2("A")
-	trb := NewLocalTransport2("B")
+	tra := NewLocalTransport("A")
+	trb := NewLocalTransport("B")
 
-	tra.Connect(trb)
-	trb.Connect(trb)
-	assert.Equal(t, tra.peers[trb.addr], trb)
-	assert.Equal(t, trb.peers[tra.addr], tra)
+	tra2 := tra.(*LocalTransport)
+	trb2 := trb.(*LocalTransport)
+
+	tra2.Connect(trb)
+	trb2.Connect(tra)
+
+	assert.Equal(t, tra2.peers[trb2.addr], trb2)
+	assert.Equal(t, trb2.peers[tra2.addr], tra2)
 }
 
 func TestSendMessage(t *testing.T) {
-	tra := NewLocalTransport2("A")
-	trb := NewLocalTransport2("B")
+	tra := NewLocalTransport("A").(*LocalTransport)
+	trb := NewLocalTransport("B").(*LocalTransport)
 
 	tra.Connect(trb)
 	trb.Connect(trb)

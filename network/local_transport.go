@@ -20,14 +20,6 @@ func NewLocalTransport(addr NetAddr) Transport {
 	}
 }
 
-func NewLocalTransport2(addr NetAddr) *LocalTransport {
-	return &LocalTransport{
-		addr:      addr,
-		consumeCh: make(chan RPC, 1024),
-		peers:     make(map[NetAddr]*LocalTransport),
-	}
-}
-
 func (t *LocalTransport) Consume() <-chan RPC {
 	return t.consumeCh
 }
