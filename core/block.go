@@ -5,6 +5,7 @@ import (
 	"djeday123/blockchain1/crypto"
 	"djeday123/blockchain1/types"
 	"encoding/gob"
+	"fmt"
 	"io"
 )
 
@@ -34,8 +35,28 @@ func NewBlock(h *Header, tx []Transaction) *Block {
 	}
 }
 
-func (b *Block) Sign(privKey crypto.PrivateKey) *crypto.Signature {
+func (b *Block) Sign(privKey crypto.PrivateKey) error {
+	sig, err := privKey.Sign(b.HeaderData())
+	if err != nil {
+		return err
+	}
 
+	b.Validator = privKey.PublicKey()
+	b.Signature = sig
+
+	return nil
+}
+
+func (b *Block) Verify() error {
+	if b.Signature == nil {
+		return fmt.Errorf("block has no signature")
+	}
+
+	if !b.Signature.Verify(b.Validator, b.HeaderData()) {
+		return fmt.Errorf("block has invalid signature")
+	}
+
+	return nil
 }
 
 func (b *Block) Decode(r io.Reader, dec Decoder[*Block]) error {
