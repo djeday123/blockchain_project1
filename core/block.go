@@ -75,6 +75,13 @@ func (b *Block) Hash(hasher Hasher[*Block]) types.Hash {
 	return b.hash
 }
 
+// type Bl struct {
+// 	hash types.Hash
+// }
+// func (b Bl) Hash(b2 *Block) types.Hash {
+// 	return b2.hash
+// }
+
 func (b *Block) HeaderData() []byte {
 	buf := &bytes.Buffer{}
 	enc := gob.NewEncoder(buf)
