@@ -5,8 +5,9 @@ import (
 	"crypto/elliptic"
 	"crypto/rand"
 	"crypto/sha256"
-	"djeday123/blockchain1/types"
 	"math/big"
+
+	"github.com/djeday123/blockchain1/types"
 )
 
 type PrivateKey struct {

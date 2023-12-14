@@ -6,3 +6,6 @@ run: build
 
 test:
 	go test  ./...
+
+test2:
+	go test  -v ./...

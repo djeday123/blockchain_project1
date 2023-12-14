@@ -1,8 +1,9 @@
 package core
 
 import (
-	"djeday123/blockchain1/types"
 	"testing"
+
+	"github.com/djeday123/blockchain1/types"
 
 	"github.com/stretchr/testify/assert"
 )

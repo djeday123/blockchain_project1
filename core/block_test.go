@@ -2,11 +2,12 @@ package core
 
 import (
 	_ "bytes"
-	"djeday123/blockchain1/crypto"
-	"djeday123/blockchain1/types"
 	"fmt"
 	"testing"
 	"time"
+
+	"github.com/djeday123/blockchain1/crypto"
+	"github.com/djeday123/blockchain1/types"
 
 	"github.com/stretchr/testify/assert"
 )

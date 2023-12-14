@@ -2,11 +2,12 @@ package core
 
 import (
 	"bytes"
-	"djeday123/blockchain1/crypto"
-	"djeday123/blockchain1/types"
 	"encoding/gob"
 	"fmt"
 	"io"
+
+	"github.com/djeday123/blockchain1/crypto"
+	"github.com/djeday123/blockchain1/types"
 )
 
 type Header struct {

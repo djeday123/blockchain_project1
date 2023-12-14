@@ -1,4 +1,4 @@
-module djeday123/blockchain1
+module github.com/djeday123/blockchain1
 
 go 1.20
 

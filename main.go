@@ -1,8 +1,9 @@
 package main
 
 import (
-	"djeday123/blockchain1/network"
 	"time"
+
+	"github.com/djeday123/blockchain1/network"
 )
 
 // Server
