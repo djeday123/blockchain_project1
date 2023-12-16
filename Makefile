@@ -1,11 +1,11 @@
 build:
-	go build -o ./bin/blockchain1
+	go1.18 build -o ./bin/blockchain1
 
 run: build
 	./bin/blockchain1
 
 test:
-	go test  ./...
+	go1.18 test  ./...
 
 test2:
-	go test  -v ./...
+	go1.18 test  -v ./...
