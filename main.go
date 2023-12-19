@@ -2,7 +2,6 @@ package main
 
 import (
 	"bytes"
-	"fmt"
 	"math/rand"
 	"strconv"
 	"time"
@@ -47,7 +46,7 @@ func main() {
 func sendTransaction(tr network.Transport, to network.NetAddr) error {
 	privKey := crypto.GeneratePrivateKey()
 	dt := strconv.FormatInt(int64(rand.Intn(10000)), 10)
-	fmt.Println(dt)
+	//fmt.Println(dt)
 	data := []byte(dt)
 	tx := core.NewTransaction(data)
 	tx.Sign(privKey)
